@@ -1,4 +1,4 @@
-import Job from '../models/jobModel.js';
+import Job from '../models/JobModel.js';
 import { StatusCodes } from 'http-status-codes';
 
 // GET ALL JOBS
@@ -6,6 +6,7 @@ import { StatusCodes } from 'http-status-codes';
 // @route  GET /api/v1/jobs
 // @access Public
 export const getJobs = async (req, res) => {
+  console.log(req.user);
   const jobs = await Job.find({});
   res.status(StatusCodes.OK).json({ jobs });
 };

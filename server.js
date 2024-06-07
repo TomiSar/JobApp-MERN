@@ -4,12 +4,15 @@ dotenv.config();
 import express from 'express';
 import colors from 'colors';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 const port = 5100 || process.env.PORT;
 import connectDB from './config/db.js';
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
+import { authenticateUser } from './middleware/authMiddleware.js';
 
 // routers
 import jobRouter from './routes/jobRouter.js';
+import authRouter from './routes/authRouter.js';
 
 // Connect to DB
 connectDB();
@@ -20,6 +23,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 app.use(express.json());
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
   res.send('Hello from server');
@@ -30,7 +34,8 @@ app.post('/', (req, res) => {
   res.json({ message: 'data received', data: req.body });
 });
 
-app.use('/api/v1/jobs', jobRouter);
+app.use('/api/v1/jobs', authenticateUser, jobRouter);
+app.use('/api/v1/auth', authRouter);
 
 app.use('*', (req, res) => {
   res.status(404).json({ msg: 'Not found' });
