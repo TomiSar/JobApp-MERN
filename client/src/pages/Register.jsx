@@ -10,10 +10,10 @@ export const action = async ({ request }) => {
   const data = Object.fromEntries(formData);
   try {
     await customFetch.post('/auth/register', data);
-    toast.success('Registration successful');
+    toast.success('Registration successful', { autoClose: 1000 });
     return redirect('/login');
   } catch (error) {
-    toast.error(error?.response?.data?.msg);
+    toast.error(error?.response?.data?.msg, { autoClose: 1000 });
     return error;
   }
 };
