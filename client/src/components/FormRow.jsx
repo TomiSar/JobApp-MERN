@@ -9,7 +9,7 @@ const FormRow = ({ type, name, labelText, defaultValue }) => {
         type={type}
         id={name}
         name={name}
-        // defaultValue='Chuck'
+        // defaultValue={defaultValue || ''}
         placeholder={defaultValue || ''}
         required
       />
