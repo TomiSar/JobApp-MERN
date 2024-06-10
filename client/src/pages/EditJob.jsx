@@ -18,7 +18,7 @@ export const loader = async ({ params }) => {
     const { data } = await customFetch.get(`/jobs/${params.id}`);
     return data;
   } catch (error) {
-    toast.error(error?.response?.data?.msg);
+    toast.error(error?.response?.data?.msg, { autoClose: 1000 });
     return redirect('/dashboard/all-jobs');
   }
 };
