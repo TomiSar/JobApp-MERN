@@ -45,6 +45,6 @@ export const updateJob = async (req, res) => {
 // @route  DELETE /api/v1/jobs/:id
 // @access Public
 export const deleteJob = async (req, res) => {
-  const removedJob = await Job.findByIdAndDelete(eq.params.id);
+  const removedJob = await Job.findByIdAndDelete(req.params.id);
   res.status(StatusCodes.OK).json({ msg: 'Job deleted', job: removedJob });
 };
