@@ -5,6 +5,10 @@ import express from 'express';
 import colors from 'colors';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import cloudinary from 'cloudinary';
 const port = 5100 || process.env.PORT;
 import connectDB from './config/db.js';
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
@@ -23,6 +27,15 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.resolve(__dirname, './public')));
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
+
 app.use(express.json());
 app.use(cookieParser());
 

@@ -1,11 +1,6 @@
 import styled from 'styled-components';
-import { FormRow } from '../components';
-import {
-  Form,
-  useNavigation,
-  redirect,
-  useOutletContext,
-} from 'react-router-dom';
+import { FormRow, SubmitButton } from '../components';
+import { Form, redirect, useOutletContext } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { JOB_STATUS, JOB_TYPE } from '../../../utils/constants';
 import customFetch from '../utils/customFetch';
@@ -26,25 +21,13 @@ export const action = async ({ request }) => {
 
 const AddJob = () => {
   const { user } = useOutletContext();
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting';
   return (
     <Wrapper>
       <Form className='form' method='post'>
         <h4 className='form-title'>Add job</h4>
         <div className='form-center'>
-          <FormRow
-            type='text'
-            name='position'
-            labelText='Position'
-            defaultValue='Please enter your position...'
-          />
-          <FormRow
-            type='text'
-            name='company'
-            labelText='Company'
-            defaultValue='Please enter your company...'
-          />
+          <FormRow type='text' name='position' />
+          <FormRow type='text' name='company' />
           <FormRow
             type='text'
             name='jobLocation'
@@ -63,13 +46,7 @@ const AddJob = () => {
             list={Object.values(JOB_TYPE)}
             defaultValue={JOB_TYPE.FULL_TIME}
           />
-          <button
-            className='btn btn-block form-btn'
-            type='submit'
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Submitting...' : 'Submit'}
-          </button>
+          <SubmitButton formBtn />
         </div>
       </Form>
     </Wrapper>

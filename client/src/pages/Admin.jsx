@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import { FaSuitcaseRolling, FaCalendarCheck } from 'react-icons/fa';
-import { FormRow, StatItem } from '../components';
-import { Form, useNavigation, redirect, useLoaderData } from 'react-router-dom';
+import { StatItem } from '../components';
+import { redirect, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { JOB_STATUS, JOB_TYPE } from '../../../utils/constants';
 import customFetch from '../utils/customFetch';
-import FormRowSelect from '../components/FormRowSelect';
 
 export const loader = async () => {
   try {
