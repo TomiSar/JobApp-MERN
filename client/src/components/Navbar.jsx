@@ -1,7 +1,7 @@
+import styled from 'styled-components';
 import Logo from './Logo';
 import LogoutContainer from './LogoutContainer';
 import ThemeToggle from './ThemeToggle';
-import styled from 'styled-components';
 import { FaAlignLeft } from 'react-icons/fa';
 import { useDashboardContext } from '../pages/DashboardLayout';
 
