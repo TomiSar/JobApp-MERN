@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FormRow, FormRowSelect, SubmitButton } from '.';
+import { FormRow, FormRowSelect } from '.';
 import { Form, useSubmit, Link } from 'react-router-dom';
 import { JOB_TYPE, JOB_STATUS, JOB_SORT_BY } from '../../../utils/constants';
 import { useAllJobsContext } from '../pages/AllJobs';
@@ -16,7 +16,7 @@ const SearchContainer = () => {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         onChange(form);
-      }, 2000);
+      }, 1000);
     };
   };
 
