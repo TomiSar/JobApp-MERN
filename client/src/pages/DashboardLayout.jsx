@@ -6,6 +6,7 @@ import { checkDefaultTheme } from '../App';
 import customFetch from '../utils/customFetch';
 import { toast } from 'react-toastify';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const loader = async () => {
   try {
     const { data } = await customFetch.get('/users/current-user');
@@ -33,7 +34,6 @@ const DashboardLayout = ({ isDarkThemeEnabled }) => {
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
-    console.log('Toggle sidebar');
   };
 
   const logoutUser = async () => {

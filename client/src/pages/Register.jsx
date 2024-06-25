@@ -5,6 +5,7 @@ import { Form, redirect, Link } from 'react-router-dom';
 import customFetch from '../utils/customFetch';
 import { toast } from 'react-toastify';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
@@ -24,36 +25,11 @@ const Register = () => {
       <Form method='post' className='form'>
         <Logo />
         <h4>Register</h4>
-        <FormRow
-          type='text'
-          name='name'
-          labelText='Name'
-          defaultValue='Please enter your name...'
-        />
-        <FormRow
-          type='text'
-          name='lastName'
-          labelText='Last Name'
-          defaultValue='Please enter your last name...'
-        />
-        <FormRow
-          type='text'
-          name='location'
-          labelText='Location'
-          defaultValue='Please enter your location...'
-        />
-        <FormRow
-          type='email'
-          name='email'
-          labelText='Email'
-          defaultValue='Please enter your email...'
-        />
-        <FormRow
-          type='password'
-          name='password'
-          labelText='Password'
-          defaultValue='Please enter your password...'
-        />
+        <FormRow type='text' name='name' labelText='Name' />
+        <FormRow type='text' name='lastName' labelText='Last Name' />
+        <FormRow type='text' name='location' labelText='Location' />
+        <FormRow type='email' name='email' labelText='Email' />
+        <FormRow type='password' name='password' labelText='Password' />
         <SubmitButton />
         <p>
           Already a member?

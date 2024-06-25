@@ -52,9 +52,6 @@ export const getJobs = async (req, res) => {
   res
     .status(StatusCodes.OK)
     .json({ totalJobs, numOfPages, currentPage: page, jobs });
-
-  // const jobs = await Job.find({ createdBy: req.user.userId });
-  // res.status(StatusCodes.OK).json({ jobs });
 };
 
 // GET SINGLE JOB

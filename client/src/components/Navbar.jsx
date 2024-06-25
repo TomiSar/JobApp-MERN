@@ -2,11 +2,13 @@ import styled from 'styled-components';
 import Logo from './Logo';
 import LogoutContainer from './LogoutContainer';
 import ThemeToggle from './ThemeToggle';
-import { FaAlignLeft } from 'react-icons/fa';
+import { FaAlignLeft, FaHome } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { useDashboardContext } from '../pages/DashboardLayout';
 
 const Navbar = () => {
-  const { toggleSidebar } = useDashboardContext();
+  const { toggleSidebar, user } = useDashboardContext();
+
   return (
     <Wrapper>
       <div className='nav-center'>
@@ -17,6 +19,13 @@ const Navbar = () => {
           <Logo />
           <h4 className='logo-text'>Dashboard</h4>
         </div>
+        {user && user?.name === 'test' && user?.email === 'test@test.com' && (
+          <div>
+            <Link className='toggle-btn' to={'/'}>
+              <FaHome />
+            </Link>
+          </div>
+        )}
         <div className='btn-container'>
           <ThemeToggle />
           <LogoutContainer />
