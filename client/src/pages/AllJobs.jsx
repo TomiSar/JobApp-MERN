@@ -4,6 +4,7 @@ import customFetch from '../utils/customFetch';
 import { useLoaderData } from 'react-router-dom';
 import { useContext, createContext } from 'react';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const loader = async ({ request }) => {
   try {
     const params = Object.fromEntries([
