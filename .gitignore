@@ -14,7 +14,6 @@ lerna-debug.log*
 *.svg
 
 node_modules
-dist
 dist-ssr
 *.local
 *.env
