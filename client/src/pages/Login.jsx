@@ -2,21 +2,25 @@ import styled from 'styled-components';
 import { FormRow, Logo, SubmitButton } from '../components';
 import { Form, redirect, Link, useNavigate } from 'react-router-dom';
 import customFetch from '../utils/customFetch';
+import axios from 'axios';
 import { toast } from 'react-toastify';
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-  try {
-    await customFetch.post('/auth/login', data);
-    toast.success('Login successful', { autoClose: 1000 });
-    return redirect('/dashboard');
-  } catch (error) {
-    toast.error(error?.response?.data?.msg, { autoClose: 1000 });
-    return error;
-  }
-};
+export const action =
+  (queryClient) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    try {
+      await axios.post('/api/v1/auth/login', data);
+      queryClient.invalidateQueries();
+      toast.success('Login successful');
+      return redirect('/dashboard');
+    } catch (error) {
+      toast.error(error.response.data.msg);
+      return error;
+    }
+  };
 
 const Login = () => {
   const navigate = useNavigate();

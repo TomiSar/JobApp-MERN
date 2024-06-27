@@ -13,6 +13,8 @@ const port = 5100 || process.env.PORT;
 import connectDB from './config/db.js';
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 import { authenticateUser } from './middleware/authMiddleware.js';
+import helmet from 'helmet';
+import mongoSanitize from 'express-mongo-sanitize';
 
 // routers
 import jobRouter from './routes/jobRouter.js';
@@ -38,10 +40,8 @@ cloudinary.config({
 
 app.use(express.json());
 app.use(cookieParser());
-
-app.get('/', (req, res) => {
-  res.send('Hello from server');
-});
+app.use(helmet());
+app.use(mongoSanitize());
 
 app.post('/', (req, res) => {
   console.log(req);
