@@ -10,7 +10,6 @@ export const action =
     try {
       await customFetch.delete(`/jobs/${params.id}`);
       queryClient.invalidateQueries(['jobs']);
-
       toast.success('Job deleted successfully', { autoClose: 1000 });
     } catch (error) {
       toast.error(error.response.data.msg, { autoClose: 1000 });

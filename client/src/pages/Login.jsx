@@ -14,10 +14,10 @@ export const action =
     try {
       await axios.post('/api/v1/auth/login', data);
       queryClient.invalidateQueries();
-      toast.success('Login successful');
+      toast.success('Login successful', { autoClose: 1000 });
       return redirect('/dashboard');
     } catch (error) {
-      toast.error(error.response.data.msg);
+      toast.error(error.response.data.msg, { autoClose: 1000 });
       return error;
     }
   };

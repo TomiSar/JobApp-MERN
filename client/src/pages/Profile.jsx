@@ -17,10 +17,10 @@ export const action =
     try {
       await customFetch.patch('/users/update-user', formData);
       queryClient.invalidateQueries(['user']);
-      toast.success('Profile updated successfully');
+      toast.success('Profile updated successfully', { autoClose: 1000 });
       return redirect('/dashboard');
     } catch (error) {
-      toast.error(error?.response?.data?.msg);
+      toast.error(error?.response?.data?.msg, { autoClose: 1000 });
       return null;
     }
   };
